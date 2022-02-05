@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title> 회원 목록 페이지 (관리자용)</title>
+</head>
+<body>
+
+<h2 style="text-align: center;">회원목록</h2>
+<table border="1">
+    <tr>
+        <td>회원번호</td>
+        <td>ID</td>
+        <td>이름</td>
+<!--        <td>email</td>-->
+<!--        <td>회원가입일자</td>-->
+<!--        <td>최근 회원 정보 수정일</td>-->
+    </tr>
+<!--    <c:forEach items="${members}">-->
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.code}"></td>
+            <td th:text="${member.id}">id</td>
+            <td th:text="${member.name}">name</td>
+<!--            <td><c:out value="${mb.useremail}"></c:out></td>-->
+<!--            <td><c:out value="${mb.regdate}"></c:out></td>-->
+<!--            <td><c:out value="${mb.updatedate}"></c:out></td>-->
+        </tr>
+        </tbody>
+</table>
+<input type="button" value="메인으로" class="btn" onclick="location.href='/'">
+
+</body>
+</html>

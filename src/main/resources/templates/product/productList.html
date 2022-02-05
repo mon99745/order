@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title> 상품 목록</title>
+</head>
+<body>
+
+<h2 style="text-align: center;">상품 목록</h2>
+<table border="1">
+    <tr>
+        <td>상품번호</td>
+        <td>카테고리</td>
+        <td>상품이름</td>
+        <td>상품가격</td>
+    </tr>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">product_num</td>
+        <td th:text="${product.product_category}">product_category</td>
+        <td>
+            <a th:href="@{/productDetail(SelectedItemNo=${product.id})}">
+                <span th:text="${product.product_name}"></span>
+            </a>
+        </td>
+        <td th:text="${product.product_price}">price</td>
+    </tr>
+    </tbody>
+</table>
+<div sec:authorize-expr= "hasRole('ADMIN')">
+    <input type="button" value="상품등록" class="btn" onclick="location.href='/productUpload'"><br>
+</div>
+<input type="button" value="메인으로" class="btn" onclick="location.href='/'">
+
+</body>
+</html>

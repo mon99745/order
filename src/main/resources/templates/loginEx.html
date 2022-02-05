@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org", lang="ko">
+<head>
+    <title>Register Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/static/css/index.css">
+
+
+</head>
+<div class="wrap">
+    <div class="form-wrap">
+        <div class="button-wrap">
+            <div id="btn"></div>
+            <button type="button" class="togglebtn" onclick="login()">LOGIN</button>
+            <button type="button" class="togglebtn" onclick="register()">REGISTER</button>
+        </div>
+        <div class="social-icons">
+            <img src="../static/img/fb.png" alt="facebook">
+            <img src="../static/img/tw.png" alt="twitter">
+            <img src="../static/img/gl.png" alt="google">
+        </div>
+        <!--        로그인-->
+        <form id="login" action="" class="input-group">
+            <input type="text" class="input-field" placeholder="User ID" required>
+            <input type="password" class="input-field" placeholder="User Password" required>
+            <input type="checkbox" class="checkbox"><span>Remember Password</span>
+            <button class="submit">Login</button>
+        </form>
+        <!--        회원가입-->
+        <form id="register" action="" class="input-group">
+            <input type="text" class="input-field" placeholder="User ID" required>
+            <input type="password" class="input-field" placeholder="User Password" required>
+            <input type="password" class="input-field" placeholder="Enter Password" required>
+            <input type="email" class="input-field" placeholder="Your Email" required>
+            <input type="checkbox" class="checkbox"><span>회원 가입을 동의 하시겠습니까?</span>
+            <button class="submit">REGISTER</button>
+        </form>
+    </div>
+</div>
+<script src="/static/js/index.js"></script>
+</body>
+</html>

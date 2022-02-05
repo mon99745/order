@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 주문 목록</title>
+</head>
+<body>
+
+<h2 style="text-align: center;">내 주문 목록</h2>
+<table border="1">
+    <tr>
+        <td>주문번호</td>
+        <td>주문상태</td>
+        <td>주문일자</td>
+        <td>상품번호</td>
+        <td>상품명</td>
+        <td>상품가격</td>
+        <td>상품개수</td>
+        <td>개별총액</td>
+        <td>주문총액</td>
+    </tr>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.orderInfo.id}"></td>
+        <td th:text="${order.orderInfo.order_status}"></td>
+        <td th:text="${order.orderInfo.reg_time}"></td>
+        <td th:text="${order.productInfo.id}"></td>
+        <td th:text="${order.productInfo.product_name}"></td>
+        <td th:text="${order.order_price}"></td>
+        <td th:text="${order.order_quantity}"></td>
+        <td th:text="${order.getTotalPrice()}"></td>
+        <td th:text="${order.orderInfo.getTotalPrice()}"></td>
+        <td>
+            <form th:action="@{/cancelOrder}" method="POST">
+                <input type="hidden" name="order_num" th:value="${order.orderInfo.getId()}">
+                <button type="submit">주문취소</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<input type="button" value="메인으로" class="btn" onclick="location.href='/'">
+
+</body>
+</html>

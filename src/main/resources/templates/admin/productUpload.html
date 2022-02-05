@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 등록</title>
+</head>
+<body>
+<h1>Sign Up</h1><hr>
+
+<form th:action="@{/productUploader}" method="POST">
+    상품 카테고리 : <select name="product_category" size="3">
+                    <option value="의류">의류</option>
+                    <option value="음식">음식</option>
+                    <option value="액세서리">액세서리</option>
+                </select><br>
+    상품 이름 : <input type="text" name="product_name"> <br>
+    상품 가격 : <input type="text" name="product_price"> <br>
+    상품 재고 : <input type="text" name="product_stock"> <br>
+    상품 설명 : <input type="text" name="product_detail"> <br>
+    <button type="submit">등록</button>
+    <input type="button" value="취소" class="btn" onclick="location.href='/products'">
+</form> <br>
+
+<a href="/login">Go to login →</a>
+</body>
+</html>

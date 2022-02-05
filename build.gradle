@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+group = 'testProject'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+	mavenCentral()
+}
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.6'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.6'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.5.6') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		//스프링 시큐리티를 사용하기 위해 추가
+		implementation 'org.springframework.boot:spring-boot-starter-security'
+		// 뷰 단에서 현재 로그인된 사용자의 정보를 가져오기 위해 추가
+		implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+		//MySQL 연동
+		implementation 'mysql:mysql-connector-java'
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa' }
+
+}
+test {
+	useJUnitPlatform()
+}
